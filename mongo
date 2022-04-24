@@ -4,10 +4,10 @@ db.restaurants.find({}, {name:1,cuisine:1,restaurant_id:1,borough:1,_id:0}).toAr
 db.restaurants.find({}, {name:1,cuisine:1,restaurant_id:1,borough:1,_id:0, "address.zipcode":1}).toArray();
 db.restaurants.find({"borough":"Bronx"});
 db.restaurants.find({"borough":"Bronx"}).limit(5);
- db.restaurants.find({"borough":"Bronx"}).limit(5).skip(5);
+db.restaurants.find({"borough":"Bronx"}).limit(5).skip(5);
 db.restaurants.find({"grades.score":{ $gt: 90}});
--------------db.restaurants.find({"grades.score":{ $gt: 80, $lt: 100 }});
- db.restaurants.find({"address.coord.0":{ $lt:-95.754168}});
+db.restaurants.find({"grades.score":{ $gt: 80, $lt: 100 }});
+db.restaurants.find({"address.coord.0":{ $lt:-95.754168}});
 db.restaurants.find({$and: [{"cuisine":{$ne:"American "}},{"address.coord.0": { $lt : -65.754168}},{"grades.score":{$gt: 70} }]});
 db.restaurants.find({"cuisine":{$ne:"American "},"address.coord.0": { $lt : -65.754168},"grades.score":{$gt: 70} });
 db.restaurants.find({$and: [{"cuisine":{$ne:"American "}},{"grades.score":{$gt: 70} },{"borough":{$ne:"Brooklyn"}},{"grades.grade":"A" }]});
@@ -17,31 +17,8 @@ db.restaurants.find({"name": /Reg/}, {name:1,cuisine:1,restaurant_id:1,borough:1
 db.restaurants.find({ $or: [{"cuisine":"American "}, {"cuisine":"Chinese"}], "borough": "Bronx"});
 db.restaurants.find({ $or: [{"borough": "Brooklyn"}, {"borough": "Bronx"},{"borough": "Queens"}, {"borough": "Staten Island"}]},{name:1,cuisine:1,restaurant_id:1,borough:1,_id:0});
 db.restaurants.find({ $and: [{"borough": {$ne:"Brooklyn"}}, {"borough": {$ne:"Bronx"}},{"borough": {$ne:"Queens"}}, {"borough": {$ne:"Staten Island"}}]},{name:1,cuisine:1,restaurant_id:1,borough:1,_id:0});
------------db.restaurants.find({"grades.score":{ $lte: 10}},{name:1,cuisine:1,restaurant_id:1,borough:1,_id:0}).toArray();
-------db.restaurants.find({$or: [{"name": /^Wil/}, ]},{name:1,cuisine:1,restaurant_id:1,borough:1,_id:0}).toArray();
-
-
-"grades" : [
-			{
-				"date" : ISODate("2014-01-07T00:00:00Z"),
-				"grade" : "A",
-				"score" : 7
-			},
-			{
-				"date" : ISODate("2013-05-09T00:00:00Z"),
-				"grade" : "B",
-				"score" : 24
-			},
-			{
-				"date" : ISODate("2012-09-05T00:00:00Z"),
-				"grade" : "A",
-				"score" : 13
-			},
-			{
-				"date" : ISODate("2011-08-25T00:00:00Z"),
-				"grade" : "A",
-				"score" : 13
-			}
+db.restaurants.find({"grades.score":{ $lte: 10}},{name:1,cuisine:1,restaurant_id:1,borough:1,_id:0}).toArray();
+db.restaurants.find({$or: [{"name": /^Wil/}, ]},{name:1,cuisine:1,restaurant_id:1,borough:1,_id:0}).toArray();
 
 
 
@@ -49,10 +26,3 @@ db.restaurants.find({ $and: [{"borough": {$ne:"Brooklyn"}}, {"borough": {$ne:"Br
 
 
 
-
-
-
-
-
-
-sudo service mongod start
